@@ -1,3 +1,5 @@
+This is the structure of a simple order object, it will place a market order for $100 worth BTC when executed
+
 order = {
 	"symbol": "BTC/USD",
 	"notional": "100.00",
