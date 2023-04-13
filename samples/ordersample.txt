@@ -1,0 +1,7 @@
+order = {
+	"symbol": "BTC/USD",
+	"notional": "100.00",
+	"side": "buy",
+	"type": "market",
+	"time_in_force": "gtc"
+}

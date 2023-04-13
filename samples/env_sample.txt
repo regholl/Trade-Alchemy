@@ -1,0 +1,4 @@
+paper_api = <paper api key>
+paper_secret = <paper secret>
+live_api = <live api key>
+live_secret = <live secret>
