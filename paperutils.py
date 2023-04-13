@@ -3,30 +3,36 @@ import requests
 import json
 '''This file pulls the urls, endpoints and headers from the methods file and structures all calls to the alpaca paper api'''
 
-urls = methods.urls
-endpoints = methods.endpoints
+url = methods.urls['paper']
+endpoint = methods.endpoints
 headers = methods.paper_headers
 
 
 def get_pa_account():
 	# Returns a dictionary containing paper account details
-	response = requests.get(urls['paper'] + endpoints['account'], headers=headers)
+	response = requests.get(url + endpoint['account'], headers=headers)
 	account = response.json()
 	return account
 
 
 def get_pa_positions():
 	# Returns a list of all open positions
-	reaponse = requests.get(urls['paper'] + endpoints['positions'], headers=headers)
+	reaponse = requests.get(urls + endpoint['positions'], headers=headers)
 	positions = reaponse.json()
 	return positions
 
 
 def get_pa_orders():
 	# Returns a list of ALL open orders
-	response = requests.get(urls['paper'] + endpoints['orders'], headers=headers)
+	response = requests.get(url + endpoint['orders'], headers=headers)
 	orders = response.json()
 	return orders
+
+
+def get_pa_order_by_id(id):
+	response = requests.get(url + endpoint['orders'] + f"/{id}", headers=headers)
+	details = response.json()
+	return details
 	
 	
 def post_pa_order(order):
@@ -49,6 +55,5 @@ def post_pa_order(order):
 		
 		crypro orders only support GTC or IOC types
 		'''
-	response = requests.post(urls['paper'] + endpoints['orders'], headers=headers, json=order)
-	print(response)
-	return
+	response = requests.post(url + endpoint['orders'], headers=headers, json=order)
+	return response.json()
