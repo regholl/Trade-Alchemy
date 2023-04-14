@@ -1,9 +1,0 @@
-This is the structure of a simple order object, it will place a market order for .003 BTC when executed
-
-order = {
-	"symbol": "BTC/USD",
-	"qty": "0.003",
-	"side": "buy",
-	"type": "market",
-	"time_in_force": "gtc"
-}

@@ -30,4 +30,3 @@ def validate_order_request(request_data):
 	except ValidationError as err:
 		return False, err.messages
 	return True, None
-

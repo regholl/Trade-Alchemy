@@ -1,4 +1,4 @@
-from methods import methods
+import methods
 import requests
 import json 
 

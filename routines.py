@@ -1,7 +1,7 @@
 import paper_utils as pa
 import live_utils as lv
 import data_utils as dt
-from methods import methods
+import methods
 
 '''
 this file will hold all the custom built routines I use for portfolio rebalancing, dollar cost averaging and trade scaling

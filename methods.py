@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 import os
+
 ''' This files sets up an easy to reference list of all urls and endpoints as well as all the headers required for api calls.
 
 live headers are required for most market data api calls
@@ -8,7 +9,8 @@ live headers are required for most market data api calls
 urls = {
  'paper': 'https://paper-api.alpaca.markets',
  'live': 'https://api.alpaca.markets',
- 'data': 'https://data.alpaca.markets'
+ 's_data': 'https://data.alpaca.markets',
+ 'c_data': 'https://data.alpaca.markets'
 }
 endpoints = {
 	'account': '/v2/account', 

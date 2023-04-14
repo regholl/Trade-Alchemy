@@ -1,6 +1,0 @@
-This is how your .env file should look, you can obtain the API keys directly from the alpaca dashboard
-
-paper_api = <paper api key>
-paper_secret = <paper secret>
-live_api = <live api key>
-live_secret = <live secret>

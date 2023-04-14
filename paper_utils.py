@@ -1,6 +1,7 @@
-from methods import methods
+import methods
 import requests
 import json
+
 '''This file pulls the urls, endpoints and headers from the methods file and structures all calls to the alpaca paper api'''
 
 url = methods.urls['paper']
