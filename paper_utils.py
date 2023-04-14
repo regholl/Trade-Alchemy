@@ -20,7 +20,7 @@ def get_pa_account():
 
 def get_pa_positions():
 	# Returns a list of all open positions
-	reaponse = requests.get(urls + endpoint['positions'], headers=headers)
+	response = requests.get(url + endpoint['positions'], headers=headers)
 	if response.status_code == 200:
 		data = json.loads(response.content)
 		return data
