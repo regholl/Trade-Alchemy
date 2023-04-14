@@ -1,5 +1,7 @@
 from methods import methods
 import requests
+import json 
+
 '''This file pulls the urls, endpoints and headers from the methods file and structures all calls to the alpaca LIVE ACCOUNT api.. THE API CALLS HERE WILL AFFECT YOUR REAL MONEY ALPACA ACCOUNT'''
 
 url = methods.urls['live']
