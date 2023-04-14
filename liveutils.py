@@ -10,5 +10,4 @@ headers = methods.live_headers
 def get_lv_account():
 	# Returns a dictionary containing live account details
 	response = requests.get(url + endpoint['account'], headers=headers)
-	account = response.json()
-	return account
+	return reaponse.json()
