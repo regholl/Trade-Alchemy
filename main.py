@@ -1,5 +1,6 @@
 import paperutils as pa
 import liveutils as lv
+import actions as act
 
 order = {
 	"symbol": "BTC/USD",
@@ -9,12 +10,5 @@ order = {
 	"time_in_force": "gtc"
 }
 
-placed = pa.post_pa_order(order)
-order_id = placed['id']
-status = pa.get_pa_order_by_id(order_id)
-spent = status['notional']
-qty = status['filled_qty'] 
-symbol = status['symbol'] 
-price = status['filled_avg_price']
-
-print(f'you spent ${spent} to buy {qty} {symbol} at an average price of {price}')
+place = act.paper_place_and_check_order(order)
+print(place)
