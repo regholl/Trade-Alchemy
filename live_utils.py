@@ -7,7 +7,7 @@ endpoint = methods.endpoints
 headers = methods.live_headers
 
 
-def get_lv_account():
+def get_account():
 	# Returns a dictionary containing live account details
 	response = requests.get(url + endpoint['account'], headers=headers)
 	if response.status_code == 200:

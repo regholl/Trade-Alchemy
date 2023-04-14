@@ -8,7 +8,7 @@ endpoint = methods.endpoints
 headers = methods.paper_headers
 
 
-def get_pa_account():
+def get_account():
 	# Returns a dictionary containing paper account details
 	response = requests.get(url + endpoint['account'], headers=headers)
 	if response.status_code == 200:
@@ -18,7 +18,7 @@ def get_pa_account():
 		print(f'Error retrieving account. Status code: {response.status_code}')
 
 
-def get_pa_positions():
+def get_positions():
 	# Returns a list of all open positions
 	response = requests.get(url + endpoint['positions'], headers=headers)
 	if response.status_code == 200:
@@ -28,7 +28,7 @@ def get_pa_positions():
 		print(f'Error retrieving positions. Status code: {response.status_code}')
 
 
-def get_pa_orders():
+def get_orders():
 	# Returns a list of ALL open orders
 	response = requests.get(url + endpoint['orders'], headers=headers)
 	if response.status_code == 200:
@@ -38,7 +38,7 @@ def get_pa_orders():
 		print(f'Error retrieving orders. Status code: {response.status_code}')
 
 
-def get_pa_order_by_id(id):
+def get_order_by_id(id):
 	# Returns details of the order id that is passed in
 	response = requests.get(url + endpoint['orders'] + f"/{id}", headers=headers)
 	if response.status_code == 200:
@@ -48,7 +48,7 @@ def get_pa_order_by_id(id):
 		print(f'Error retrieving order. Status code: {response.status_code}')
 	
 	
-def post_pa_order(order):
+def post_order(order):
 	# Accepts a dict object and returns order details
 	response = requests.post(url + endpoint['orders'], headers=headers, json=order)
 	if response.status_code == 200:
