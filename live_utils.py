@@ -10,4 +10,8 @@ headers = methods.live_headers
 def get_lv_account():
 	# Returns a dictionary containing live account details
 	response = requests.get(url + endpoint['account'], headers=headers)
-	return reaponse.json()
+	if response.status_code == 200:
+		data = json.loads(response.content)
+		return data
+	else:
+		print(f'Error retrieving account. Status code: {response.status_code}')

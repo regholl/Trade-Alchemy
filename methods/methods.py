@@ -10,7 +10,11 @@ urls = {
  'live': 'https://api.alpaca.markets',
  'data': 'https://data.alpaca.markets'
 }
-endpoints = {'account': '/v2/account', 'orders': '/v2/orders', 'positions': '/v2/positions'}
+endpoints = {
+	'account': '/v2/account', 
+	'orders': '/v2/orders',
+	'positions': '/v2/positions'
+             }
 
 load_dotenv()
 paper_api = os.getenv("paper_api")

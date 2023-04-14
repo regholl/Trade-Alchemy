@@ -1,8 +1,8 @@
-This is the structure of a simple order object, it will place a market order for $100 worth BTC when executed
+This is the structure of a simple order object, it will place a market order for .003 BTC when executed
 
 order = {
 	"symbol": "BTC/USD",
-	"notional": "100.00",
+	"qty": "0.003",
 	"side": "buy",
 	"type": "market",
 	"time_in_force": "gtc"
