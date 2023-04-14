@@ -27,3 +27,5 @@ def get_stock_spread(symbol):
 	return spread
 
 
+#							CRYPTO DATA
+#########################################################
