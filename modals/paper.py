@@ -7,14 +7,14 @@ import os
 This file sets up the urls, endpoints and headers as well as structures all calls to the alpaca paper api
 '''
 
-#							SETUP
+#                                                       SETUP
 #########################################################
 
 url = 'https://paper-api.alpaca.markets'
 endpoint = {
-	'account': '/v2/account', 
-	'orders': '/v2/orders',
-	'positions': '/v2/positions'
+        'account': '/v2/account',
+        'orders': '/v2/orders',
+        'positions': '/v2/positions'
              }
 load_dotenv()
 paper_api = os.getenv("paper_api")
@@ -24,7 +24,7 @@ headers = {
  'Apca-Api-Secret-Key': paper_secret
 }
 
-#							METHODS
+#                                                       METHODS
 #########################################################
 
 def get_account():
@@ -35,8 +35,8 @@ def get_account():
 		return data
 	else:
 		print(f'Error retrieving account. Status code: {response.status_code}')
-
-
+		
+		
 def get_positions():
 	# Returns a list of all open positions
 	response = requests.get(url + endpoint['positions'], headers=headers)
@@ -45,8 +45,8 @@ def get_positions():
 		return data
 	else:
 		print(f'Error retrieving positions. Status code: {response.status_code}')
-
-
+		
+		
 def get_orders():
 	# Returns a list of ALL open orders
 	response = requests.get(url + endpoint['orders'], headers=headers)
@@ -55,8 +55,8 @@ def get_orders():
 		return data
 	else:
 		print(f'Error retrieving orders. Status code: {response.status_code}')
-
-
+		
+		
 def get_order_by_id(id):
 	# Returns details of the order id that is passed in
 	response = requests.get(url + endpoint['orders'] + f"/{id}", headers=headers)
@@ -65,16 +65,16 @@ def get_order_by_id(id):
 		return data
 	else:
 		print(f'Error retrieving order. Status code: {response.status_code}')
-
-
+		
+		
 def post_order(order):
 	# Accepts a dict object and returns order details
 	response = requests.post(url + endpoint['orders'],
-	                         headers=headers,
-	                         json=order)
+	headers=headers,
+	json=order)
 	if response.status_code == 200:
 		data = json.loads(response.content)
 		return data
 	else:
 		print(f'Error placing order. Status code: {response.status_code}')
-		
+

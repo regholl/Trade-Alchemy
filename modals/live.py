@@ -4,19 +4,19 @@ import json
 import os
 
 '''
-This file sets up the urls, endpoints and headers as well as structures all calls to the alpaca LIVE ACCOUNT api.. 
+This file sets up the urls, endpoints and headers as well as structures all calls to the alpaca LIVE ACCOUNT api..
 
 THE API CALLS HERE WILL AFFECT YOUR REAL MONEY ALPACA ACCOUNT
 '''
 
-#							SETUP
+#                                                       SETUP
 #########################################################
 
 url = 'https://api.alpaca.markets'
 endpoints = {
-	'account': '/v2/account', 
-	'orders': '/v2/orders',
-	'positions': '/v2/positions'
+        'account': '/v2/account',
+        'orders': '/v2/orders',
+        'positions': '/v2/positions'
              }
 
 load_dotenv()
@@ -28,7 +28,7 @@ headers = {
 }
 
 
-#							LIVE ACCOUNT
+#                                                       LIVE ACCOUNT
 #########################################################
 
 def get_account():
@@ -39,3 +39,4 @@ def get_account():
 		return data
 	else:
 		print(f'Error retrieving account. Status code: {response.status_code}')
+

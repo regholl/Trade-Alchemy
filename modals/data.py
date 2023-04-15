@@ -4,10 +4,10 @@ import json
 import os
 
 '''
-This file sets up all the necessary tooling to query the market data endpoints. Most endpoints are symbol specific so they cant be stored as a separate dict but rather used in the functions themselves. 
+This file sets up all the necessary tooling to query the market data endpoints. Most endpoints are symbol specific so they cant be stored as a separate dict but rather used in the functions themselves.
 '''
 
-#							SETUP
+#                                                       SETUP
 #########################################################
 
 url = 'https://data.alpaca.markets'
@@ -20,7 +20,7 @@ headers = {
  'Apca-Api-Secret-Key': live_secret
 }
 
-#							STOCK DATA
+#                                                       STOCK DATA
 #########################################################
 
 def get_stock_snapshot(symbol):
@@ -32,8 +32,8 @@ def get_stock_snapshot(symbol):
 		return data
 	else:
 		print(f'Error retrieving snapshot for {symbol}. Status code: {response.status_code}')
-
-
+		
+		
 def get_stock_spread(symbol):
 	# Returns a dictionary of the current bid/ask spread
 	snapshot = get_stock_snapshot(symbol)
@@ -42,10 +42,10 @@ def get_stock_spread(symbol):
 	bid = latest_quote['bp']
 	spread = {'ask': ask, 'bid':bid}
 	return spread
-
-
-
-#							CRYPTO DATA
+	
+	
+	
+#                                                       CRYPTO DATA
 #########################################################
 
 def get_xbbo(symbol):
@@ -58,7 +58,7 @@ def get_xbbo(symbol):
 	else:
 		print(f'Error retrieving XBBO for {symbol}. Status code: {response.status_code}')
 		
-
+		
 def get_crypto_spread(symbol):
 	# Returns bid and ask for symbol passed in
 	quote = get_xbbo(symbol)
@@ -68,3 +68,4 @@ def get_crypto_spread(symbol):
 	bid = cross['bp']
 	spread = {'ask':ask, 'bid':bid, 'exchange':ax}
 	return spread
+
