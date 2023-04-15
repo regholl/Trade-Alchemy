@@ -1,13 +1,31 @@
-import methods
+from dotenv import load_dotenv
 import requests
 import json
+import os
 
-'''This file pulls the urls, endpoints and headers from the methods file and structures all calls to the alpaca paper api'''
+'''
+This file sets up the urls, endpoints and headers as well as structures all calls to the alpaca paper api
+'''
 
-url = methods.urls['paper']
-endpoint = methods.endpoints
-headers = methods.paper_headers
+#							SETUP
+#########################################################
 
+url = 'https://paper-api.alpaca.markets'
+endpoint = {
+	'account': '/v2/account', 
+	'orders': '/v2/orders',
+	'positions': '/v2/positions'
+             }
+load_dotenv()
+paper_api = os.getenv("paper_api")
+paper_secret = os.getenv("paper_secret")
+headers = {
+ 'Apca-Api-Key-Id': paper_api,
+ 'Apca-Api-Secret-Key': paper_secret
+}
+
+#							METHODS
+#########################################################
 
 def get_account():
 	# Returns a dictionary containing paper account details
@@ -47,13 +65,16 @@ def get_order_by_id(id):
 		return data
 	else:
 		print(f'Error retrieving order. Status code: {response.status_code}')
-	
-	
+
+
 def post_order(order):
 	# Accepts a dict object and returns order details
-	response = requests.post(url + endpoint['orders'], headers=headers, json=order)
+	response = requests.post(url + endpoint['orders'],
+	                         headers=headers,
+	                         json=order)
 	if response.status_code == 200:
 		data = json.loads(response.content)
 		return data
 	else:
 		print(f'Error placing order. Status code: {response.status_code}')
+		
