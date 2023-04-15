@@ -39,7 +39,7 @@ def validate_stock_order(order):
 	order_schema = StockOrderSchema()
 	errors = order_schema.validate(order)
 	if errors:
-	print(errors)  # Handle validation errors
+		print(errors)  # Handle validation errors
 	else:
 		return order
 
@@ -48,7 +48,7 @@ def validate_crypto_order(order):
 	order_schema = CryptoOrderSchema()
 	errors = order_schema.validate(order)
 	if errors:
-	print(errors)  # Handle validation errors
+		print(errors)  # Handle validation errors
 	else:
 		return order
 

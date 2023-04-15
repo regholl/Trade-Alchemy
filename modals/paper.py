@@ -70,11 +70,19 @@ def get_order_by_id(id):
 def post_order(order):
 	# Accepts a dict object and returns order details
 	response = requests.post(url + endpoint['orders'],
-	headers=headers,
-	json=order)
+	headers=headers, json=order)
 	if response.status_code == 200:
 		data = json.loads(response.content)
 		return data
 	else:
 		print(f'Error placing order. Status code: {response.status_code}')
-
+		
+		
+def get_activity(activity):
+	endpoint = f'/v2/account/activities/{activity}'
+	response = requests.get(url + endpoint, headers=headers)
+	if response.status_code == 200:
+		data = json.loads(response.content)
+		return data
+	else:
+		print(f'Error retrieving the requested activity. Status code: {response.status_code}')
