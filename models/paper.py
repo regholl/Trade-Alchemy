@@ -14,7 +14,8 @@ url = 'https://paper-api.alpaca.markets'
 endpoint = {
         'account': '/v2/account',
         'orders': '/v2/orders',
-        'positions': '/v2/positions'
+        'positions': '/v2/positions',
+        'activity': '/v2/account/activities'
              }
 load_dotenv()
 paper_api = os.getenv("paper_api")
@@ -78,11 +79,21 @@ def post_order(order):
 		print(f'Error placing order. Status code: {response.status_code}')
 		
 		
-def get_activity(activity):
-	endpoint = f'/v2/account/activities/{activity}'
-	response = requests.get(url + endpoint, headers=headers)
+def get_activity():
+	# Returns a list of all account activity
+	response = requests.get(url + endpoint['activity'], headers=headers)
 	if response.status_code == 200:
 		data = json.loads(response.content)
 		return data
 	else:
 		print(f'Error retrieving the requested activity. Status code: {response.status_code}')
+		
+		
+def close_all_positions():
+	# Send a DELETE request to close all positions
+	response = requests.delete(url + endpoint['positions'], headers=headers)
+	if response.status_code == 207:
+		print("All positions have been closed.")
+	else:
+		print(f"Error while closing positions. Status code:{response.text}")
+

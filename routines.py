@@ -1,4 +1,4 @@
-import modals 
+import models
 
 '''
 this file will hold all the custom built routines I use for portfolio rebalancing, dollar cost averaging and trade scaling

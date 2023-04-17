@@ -1,8 +1,5 @@
-import modals
-import json
+import models
 
-# Price tracking grid trading bot 
-
-xbbo = modals.data.get_crypto_spread('BTCUSD')
-
+#							GRID TRADING BOT
+#########################################################
 
