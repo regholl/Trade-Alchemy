@@ -15,7 +15,8 @@ endpoint = {
         'account': '/v2/account',
         'orders': '/v2/orders',
         'positions': '/v2/positions',
-        'activity': '/v2/account/activities'
+        'activity': '/v2/account/activities',
+        'assets': '/v2/assets'
              }
 load_dotenv()
 paper_api = os.getenv("paper_api")
@@ -66,6 +67,16 @@ def get_order_by_id(id):
 		return data
 	else:
 		print(f'Error retrieving order. Status code: {response.status_code}')
+		
+
+def get_assets():
+	# Returns a list of all us_equity assets
+	response = requests.get(url + endpoint['assets'], headers=headers)
+	if response.status_code == 200:
+		data = json.loads(response.content)
+		return data
+	else:
+		print(f'Error retrieving assets. Status code: {response.status_code}')
 		
 		
 def post_order(order):
