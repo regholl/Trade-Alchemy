@@ -68,16 +68,6 @@ def get_order_by_id(id):
 	else:
 		print(f'Error retrieving order. Status code: {response.status_code}')
 		
-
-def get_assets():
-	# Returns a list of all us_equity assets
-	response = requests.get(url + endpoint['assets'], headers=headers)
-	if response.status_code == 200:
-		data = json.loads(response.content)
-		return data
-	else:
-		print(f'Error retrieving assets. Status code: {response.status_code}')
-		
 		
 def post_order(order):
 	# Accepts a dict object and returns order details
