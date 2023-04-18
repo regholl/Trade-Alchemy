@@ -9,9 +9,9 @@ A 100% pure python implementation of the Alpaca Markets API by way of direct API
 
 ## Badges
 
-[![Platform](https://img.shields.io/badge/Cross%20Platform-iOS%20%7C%20Android%20%7C%20Win%20%7C%20Linux%20%7C%20macOS-blue)
-[![Python](https://img.shields.io/badge/Language-Python-green)
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
+[![Platform](https://img.shields.io/badge/Cross%20Platform-iOS%20%7C%20Android%20%7C%20Win%20%7C%20Linux%20%7C%20macOS-blue)(https://github.com/AltKrypto)
+[![Python](https://img.shields.io/badge/Language-Python-green)(https://github.com/AltKrypto)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)(https://github.com/AltKrypto)
 
 ## Features
 
