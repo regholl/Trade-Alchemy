@@ -52,6 +52,10 @@ live_secret = <live secret key>
 - Historical data based grid bot
 - Historical, sma, rsi, bollinger grid bot
 
+## What routines are included?
+
+- Dollar Cost Averaging, buys set amount of an asset if its current price is lower than the average buy price
+
 ## FAQ
 
 #### Why when there are already Python SDKs for Alpaca?
