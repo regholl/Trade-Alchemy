@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import time
 import os
 
-def smagrid():
+def SMAbot():
 	# Set up Alpaca API credentials
 	load_dotenv()
 	api_key = os.getenv('paper_api')

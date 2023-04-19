@@ -21,9 +21,21 @@ A 100% pure python implementation of the Alpaca Markets API by way of direct API
 - Cross platform
 
 ## Requirements
+
 - pandas
 - numpy
 - matplotlib
+
+## Setup
+
+- You will need to provide a .env in the root directory formatted as:
+
+```txt
+paper_api = <paper api key>
+paper_secret = <paper secret key>
+live_api = <live api key>
+live_secret = <live secret key>
+```
 
 ## Roadmap
 
@@ -60,6 +72,10 @@ Im a man of many hats, I work a full-time job, I'm a husband, a Father and somew
 ## Disclaimer
 
 -  The trading algorithms used in this program are provided for educational and informational purposes only and should not be relied upon as the sole basis for any investment decision. The algorithms are not intended to provide legal, tax, or investment advice. The end user of this program is solely responsible for any investment decisions made using the algorithms and assumes all liability for any losses that result from the use of the program. The program is provided "as is" without warranty of any kind, either express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, or non-infringement. The program may not be suitable for all investors and the end user should ensure that they understand the risks involved and seek independent advice if necessary.
+
+## Contributions
+
+- I am not publicly making this project known but if you stumble across this project and it peeks your interest I am most definately open to suggestions 
 
 ## License
 
