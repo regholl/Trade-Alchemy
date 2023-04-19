@@ -1,1 +1,1 @@
-from . import gridbots, rlbots
+from . import SMAgrid

@@ -20,6 +20,11 @@ A 100% pure python implementation of the Alpaca Markets API by way of direct API
 - Built as "Mobile First"
 - Cross platform
 
+## Requirements
+- pandas
+- numpy
+- matplotlib
+
 ## Roadmap
 
 - Complete code coverage for entire API
@@ -31,6 +36,7 @@ A 100% pure python implementation of the Alpaca Markets API by way of direct API
 
 ## What Bots Are Included?
 
+- SMA based grid trading bot
 - 
 
 ## FAQ
@@ -53,9 +59,7 @@ Im a man of many hats, I work a full-time job, I'm a husband, a Father and somew
 
 ## Disclaimer
 
-- 
-
-
+-  The trading algorithms used in this program are provided for educational and informational purposes only and should not be relied upon as the sole basis for any investment decision. The algorithms are not intended to provide legal, tax, or investment advice. The end user of this program is solely responsible for any investment decisions made using the algorithms and assumes all liability for any losses that result from the use of the program. The program is provided "as is" without warranty of any kind, either express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, or non-infringement. The program may not be suitable for all investors and the end user should ensure that they understand the risks involved and seek independent advice if necessary.
 
 ## License
 
