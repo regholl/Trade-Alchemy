@@ -23,12 +23,15 @@ A 100% pure python implementation of the Alpaca Markets API by way of direct API
 ## Roadmap
 
 - Complete code coverage for entire API
+- Improve bots
 - Database integration
 - UI
 - Passing tests
 - Release
 
+## What Bots Are Included?
 
+- 
 
 ## FAQ
 
@@ -46,6 +49,12 @@ Im a man of many hats, I work a full-time job, I'm a husband, a Father and somew
  - [Pythonista](http://www.omz-software.com/pythonista/)
  - [Working Copy](https://workingcopyapp.com/)
  - [Runestone](https://runestone.app/)
+
+
+## Disclaimer
+
+- 
+
 
 
 ## License
