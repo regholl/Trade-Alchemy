@@ -10,9 +10,8 @@ this file will hold all the custom built routines I use for portfolio rebalancin
 #                                                       PAPER ACCOUNT
 #########################################################
 
-def paper_dca():
-	# Paper accoount dollar cost average. This routine checks all positions for negative PNL and buys the specified amout of each asset.
-	# Gather account and position informatikn
+def paper_negative_pnl():
+	# Returns a list of assets with negative pnl
 	account_info = pa.get_account()
 	portfolio_value = float(account_info['portfolio_value'])
 	positions = pa.get_positions()

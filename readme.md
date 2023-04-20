@@ -20,12 +20,6 @@ A 100% pure python implementation of the Alpaca Markets API by way of direct API
 - Built as "Mobile First"
 - Cross platform
 
-## Requirements
-
-- pandas
-- numpy
-- matplotlib
-
 ## Setup
 
 - You will need to provide a .env in the root directory formatted as:
