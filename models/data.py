@@ -1,4 +1,8 @@
 from dotenv import load_dotenv
+from datetime import datetime
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+import pandas as pd
 import requests
 import json
 import os
@@ -10,7 +14,12 @@ This file sets up all the necessary tooling to query the market data endpoints. 
 #                                                       SETUP
 #########################################################
 
-url = 'https://data.alpaca.markets'
+url = 'https://data.alpaca.markets/v2/stocks'
+crypto_url = 'https://data.alpaca.markets/v1beta3/crypto'
+crypto_endpoints = {
+        'quotes': '/us/latest/quotes',
+        'bars': '/us/bars'
+}
 
 load_dotenv()
 live_api = os.getenv("live_api")
@@ -25,7 +34,7 @@ headers = {
 
 def get_stock_snapshot(symbol):
 	# Returns most recent details of the symbol passed in
-	endpoint = f'/v2/stocks/{symbol}/snapshot'
+	endpoint = f'/{symbol}/snapshot'
 	response = requests.get(url + endpoint, headers=headers)
 	if response.status_code == 200:
 		data = json.loads(response.content)
@@ -44,31 +53,46 @@ def get_stock_spread(symbol):
 	return spread
 	
 	
-	
 #                                                       CRYPTO DATA
 #########################################################
 
-def get_xbbo(symbol):
-	# Returns cross exchange best bid for symbol passed in
-	endpoint = f'/v1beta1/crypto/{symbol}/xbbo/latest'
-	response = requests.get(url + endpoint, headers=headers)
+def get_crypto_quote(symbol):
+	# Returns current quote for symbol passed in
+	url = crypto_url
+	endpoint = crypto_endpoints['quotes']
+	data = {'symbols':symbol}
+	response = requests.get(url + endpoint, params=data, headers=headers)
 	if response.status_code == 200:
-		data = json.loads(response.content)
-		return data
+		quote = json.loads(response.content)
+		return quote
 	else:
-		print(f'Error retrieving XBBO for {symbol}. Status code: {response.status_code}')
+		print(f'Error retrieving quote for {symbol}. Status code: {response.status_code}')
 		
 		
 def get_crypto_spread(symbol):
-	# Returns bid and ask for symbol passed in
-	quote = get_xbbo(symbol)
-	cross = quote['xbbo']
-	ax = cross['ax']
-	ask = cross['ap']
-	bid = cross['bp']
-	spread = {'ask':ask, 'bid':bid, 'exchange':ax}
+	# Returns the spread prices feom a quote
+	quote = get_crypto_quote(symbol)
+	ask = float(quote['quotes'][symbol]['ap'])
+	bid = float(quote['quotes'][symbol]['bp'])
+	median = {'ask': ask, 'bid': bid}
 	return spread
+	
+	
+def get_crypto_bars(symbol, timeframe, start=None, end=None, limit=None):
+	# Returns a dataframe for the specified symbol
+	url = crypto_url
+	endpoint = crypto_endpoints['bars']
+	data = {
+	'symbols':symbol,
+	'timeframe':timeframe,
+	'start': start,
+	'end': end,
+	'limit': limit
+	}
+	response = requests.get(url + endpoint, params=data, headers=headers)
+	if response.status_code == 200:
+		bars = json.loads(response.content)
+		return bars
+	else:
+		print(f'Error retrieving bars for {symbol}. Status code: {response.status_code}{response.content}')
 
-
-def get_crypto_bars():
-	pass

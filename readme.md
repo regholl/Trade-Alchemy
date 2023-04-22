@@ -46,7 +46,7 @@ live_secret = <live secret key>
 
 ## What routines are included?
 
-- Dollar Cost Averaging, buys set amount of an asset if its current price is lower than the average buy price
+- This is a vurrent work in progress
 
 ## FAQ
 
