@@ -4,6 +4,7 @@ import pandas as pd
 
 
 def format_data(symbol, data):
+	# Formats a bars object as a dataframe for plotting
 	df = pd.DataFrame(data['bars'][symbol])
 	df['timestamp'] = pd.to_datetime(df['t'], utc=True)
 	df.set_index('timestamp', inplace=True)
@@ -12,6 +13,7 @@ def format_data(symbol, data):
 	
 	
 def plot_df(symbol, df):
+	# Plots a converted bars object as OHLC chart
 	fig, ax = plt.subplots()
 	ax.set_title(f'{symbol} OHLC Chart')
 	ax.set_xlabel('Date')

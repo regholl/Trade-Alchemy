@@ -79,7 +79,7 @@ def get_crypto_spread(symbol):
 	
 	
 def get_crypto_bars(symbol, timeframe, start=None, end=None, limit=None):
-	# Returns a dataframe for the specified symbol
+	# Returns a bars object for the specified symbol
 	url = crypto_url
 	endpoint = crypto_endpoints['bars']
 	data = {
