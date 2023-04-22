@@ -102,9 +102,9 @@ def close_all_positions():
 def get_negative_pnl():
 	# Paper accoount dollar cost average. This routine checks all positions for negative PNL and returns them in a list
 	# Gather account and position informatikn
-	account_info = pa.get_account()
+	account_info = get_account()
 	portfolio_value = float(account_info['portfolio_value'])
-	positions = pa.get_positions()
+	positions = get_positions()
 	# Create list of assets with higher average buy price than current price
 	underwater_assets = []
 	for position in positions:
