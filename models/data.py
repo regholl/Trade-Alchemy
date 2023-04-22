@@ -69,3 +69,6 @@ def get_crypto_spread(symbol):
 	spread = {'ask':ask, 'bid':bid, 'exchange':ax}
 	return spread
 
+
+def get_crypto_bars():
+	pass
