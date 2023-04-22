@@ -42,9 +42,7 @@ live_secret = <live secret key>
 
 ## What Bots Are Included?
 
-- SMA based grid bot
-- Historical data based grid bot
-- Historical, sma, rsi, bollinger grid bot
+- This is a current work in progress
 
 ## What routines are included?
 
