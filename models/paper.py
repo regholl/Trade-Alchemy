@@ -98,3 +98,25 @@ def close_all_positions():
 	else:
 		print(f"Error while closing positions. Status code:{response.text}")
 
+
+def get_negative_pnl():
+	# Paper accoount dollar cost average. This routine checks all positions for negative PNL and returns them in a list
+	# Gather account and position informatikn
+	account_info = pa.get_account()
+	portfolio_value = float(account_info['portfolio_value'])
+	positions = pa.get_positions()
+	# Create list of assets with higher average buy price than current price
+	underwater_assets = []
+	for position in positions:
+		asset_symbol = position['symbol']
+		avg_entry_price = float(position['avg_entry_price'])
+		current_price = float(position['current_price'])
+		if avg_entry_price > current_price:
+			underwater_assets.append(asset_symbol)
+	# Return list of assets with higher average buy price than current price
+	if len(underwater_assets) > 0:
+		print("The following assets in your portfolio have a higher average buy price than current price:")
+		return underwater_assets
+	else:
+		print("All assets in your portfolio have a lower or equal average buy price than current price.")
+
