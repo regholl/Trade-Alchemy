@@ -127,7 +127,6 @@ def get_negative_pnl():
 			underwater_assets.append(asset_symbol)
 	# Return list of assets with higher average buy price than current price
 	if len(underwater_assets) > 0:
-		print("The following assets in your portfolio have a higher average buy price than current price:")
 		return underwater_assets
 	else:
 		print("All assets in your portfolio have a lower or equal average buy price than current price.")

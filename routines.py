@@ -1,6 +1,6 @@
 import models as m
 
-def run_dca_buys(qty):
+def paper_dca(qty):
 	pos = m.paper.get_negative_pnl()
 	for i in pos:
 		order = m.paper.build_dca_order(i, qty)
