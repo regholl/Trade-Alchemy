@@ -46,7 +46,8 @@ live_secret = <live secret key>
 
 ## What routines are included?
 
-- This is a vurrent work in progress
+- This is a current work in progress
+- Early version of Dollar Cost Averaging routine
 
 ## FAQ
 
