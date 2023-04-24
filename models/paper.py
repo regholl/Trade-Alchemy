@@ -49,6 +49,17 @@ def get_positions():
 		print(f'Error retrieving positions. Status code: {response.status_code}')
 		
 		
+def get_asset_details(asset):
+	# Returns details for the given asset
+	target = endpoint['assets'] + f'/{asset}'
+	response = requests.get(url + target, headers=headers)
+	if response.status_code == 200:
+		details = json.loads(response.content)
+		return details
+	else:
+		print(f'Error retrieving asset details for {asset}. Status code: {response.status_code}')
+		
+		
 def get_orders():
 	# Returns a list of ALL open orders
 	response = requests.get(url + endpoint['orders'], headers=headers)
@@ -120,3 +131,14 @@ def get_negative_pnl():
 	else:
 		print("All assets in your portfolio have a lower or equal average buy price than current price.")
 
+
+def build_dca_order(symbol, qty):
+	# Builds an order according to the passed in parameters  
+	order = {
+		'symbol': symbol,
+		'notional': qty,
+		'side': 'buy',
+		'type': 'market',
+		'time_in_force': 'gtc' 
+		}
+	return order

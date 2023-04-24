@@ -1,8 +1,5 @@
 from dotenv import load_dotenv
 from datetime import datetime
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
-import pandas as pd
 import requests
 import json
 import os
