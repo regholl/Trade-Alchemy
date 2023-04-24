@@ -1,0 +1,4 @@
+us_assets = ['et', 'epd', 'enb', 'cvx', 'bp', 'psec', 'spg', 'o', 'stag', 'ritm', 'agnc', 'bx', 'f', 'gm', 'nok', 'oxy', 'ko', 'avgo', 'good', 'mrk', 'mmm', 'unit', 'kmi', 'gd', 'kss', 'dvn', 'xom', 'bby', 'pru', 'stx', 'lyb', 'adm', 'dhs', 'v', 'ea', 'sony', 'pld', 'ntes', 'kbwd', 'nvda', 'intc', 'txn', 'cboe', 'pep', 'pg', 'bac', 'pgre', 'pff', 'pgx', 'c', 'nke', 'sbux', 'sdiv', 'ge', 'siri', 'mro', 'cost', 'jpm', 'vym', 'jnpr', 'dlr', 'dia', 'spy', 'qqq', 'sphd', 'div', 'vti', 'aapl', 'msft', 'csco', 'tsm', 'qcom', 'atvi', 't', 'vz', 'wmt', 'tgt', 'hbi', 'mo', 'jnj', 'pfe', 'abbv', 'lmt', 'kmd', 'cat', 'avy']
+
+crypto = ['aave/usd', 'algo/usd', 'bat/usd', 'bch/usd', 'btc/usd', 'dia/usd', 'eth/usd', 'grt/usd', 'link/usd', 'ltc/usd', 'matic/usd', 'mkr/usd', 'near/usd', 'paxg/usd', 'shib/usd', 'sol/usd', 'trx/usd', 'uni/usd']
+

@@ -1,4 +1,5 @@
 from dotenv import load_dotenv
+import urllib.parse
 import requests
 import json
 import os
@@ -19,7 +20,8 @@ endpoint = {
         'orders': '/v2/orders',
         'positions': '/v2/positions',
         'activity': '/v2/account/activities',
-        'assets': '/v2/assets'
+        'assets': '/v2/assets',
+        'watchlist': '/v2/watchlists'
              }
 
 load_dotenv()
@@ -52,6 +54,45 @@ def get_positions():
 		return data
 	else:
 		print(f'Error retrieving positions. Status code: {response.status_code}')
+		
+
+def get_watchlists():
+	# Returns a list of watchlists
+	response = requests.get(url + endpoint['watchlist'], headers=headers)
+	if response.status_code == 200:
+		data = json.loads(response.content)
+		return data
+	else:
+		print(f'Error retrieving watchlists. Status code: {response.status_code}')
+
+
+def get_specific_watchlist(id):
+	response = requests.get(url + endpoint['watchlist'] + f'/{id}', headers=headers)
+	if response.status_code == 200:
+		data = json.loads(response.content)
+		return data
+	else:
+		print(f'Error retrieving watchlist, Status code: {response.status_code}')
+
+
+def create_watchlist(name, list):
+	data = {'name': name, 'symbols': list}
+	response = requests.post(url + endpoint['watchlist'], json=data, headers=headers)
+	if response.status_code == 200:
+		data = json.loads(response.content)
+		return data
+	else:
+		print(f'Error creating watchlist. Status code: {response.status_code}')
+
+
+def delete_watchlist(id):
+	data = id
+	response = requests.delete(url + endpoint['watchlist'] + f'/{data}', json=data, headers=headers)
+	if response.status_code == 204:
+		data = json.loads(response.content)
+		return data
+	else:
+		print(f'Error deleting watchlist. Status code:{response.status_code}')
 		
 		
 def get_asset_details(asset):
