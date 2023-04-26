@@ -177,13 +177,24 @@ def get_negative_pnl():
 		print("All assets in your portfolio have a lower or equal average buy price than current price.")
 
 
-def build_dca_order(symbol, qty):
-	# Builds an order according to the passed in parameters  
+def build_notional_order(symbol, notional, side):
+	# Builds an order for a dollar amount of said symbol  
 	order = {
 		'symbol': symbol,
-		'notional': qty,
-		'side': 'buy',
+		'notional': float(notional),
+		'side': side,
 		'type': 'market',
-		'time_in_force': 'gtc' 
+		'time_in_force': 'day' 
 		}
 	return order
+	
+
+def build_qty_order(symbol, qty, side):
+	# Builds an order for a quantity of said symbol
+	order = {
+		'symbol': symbol,
+		'qty': qty,
+		'side': side,
+		'type': 'market',
+		'time_in_force': 'day'
+	}
