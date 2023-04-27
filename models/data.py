@@ -4,13 +4,8 @@ import requests
 import json
 import os
 
-'''
-This file sets up all the necessary tooling to query the market data endpoints. Most endpoints are symbol specific so they cant be stored as a separate dict but rather used in the functions themselves.
-'''
-
 #                                                       SETUP
 #########################################################
-
 url = 'https://data.alpaca.markets/v2/stocks'
 crypto_url = 'https://data.alpaca.markets/v1beta3/crypto'
 crypto_endpoints = {

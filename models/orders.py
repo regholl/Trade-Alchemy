@@ -54,6 +54,7 @@ def get_orders(type):
 		live_url + endpoint['orders'], headers=live_headers)
 	else:
 		print('You must provide a proper account type (paper/live) in order to return a value!')
+		return
 	if response.status_code == 200:
 		data = json.loads(response.content)
 		return data
@@ -71,11 +72,13 @@ def get_order_by_id(type, id):
 		live_url + endpoint['orders'], headers=live_headers)
 	else:
 		print('You must provide a proper account type (paper/live) in order to return a value!')
+		return
 	if response.status_code == 200:
 		data = json.loads(response.content)
 		return data
 	else:
 		print(f'Error retrieving order. Status code: {response.status_code}. Message: {response.content}')
+		
 		
 def post_order(type, order):
 	# Accepts a dict object and returns order details
@@ -91,6 +94,7 @@ def post_order(type, order):
 		json=data)
 	else:
 		print('You must provide a proper account type (paper/live) in order to return a value!')
+		return
 	if response.status_code == 200:
 		data = json.loads(response.content)
 		return data
