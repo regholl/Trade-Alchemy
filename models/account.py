@@ -113,3 +113,6 @@ def close_all_positions(type):
 	else:
 		print(f'Error closing positions. Status code: {response.status_code}. Message: {response.content}')
 
+
+def get_watchlists(type):
+	pass
