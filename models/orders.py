@@ -3,6 +3,7 @@ import requests
 import json
 import os
 
+
 load_dotenv()
 
 # Live Config
@@ -36,80 +37,63 @@ endpoint = {
         'positions': '/v2/positions',
         'activity': '/v2/account/activities',
         'assets': '/v2/assets',
-        'watchlist': '/v2/watchlists'
+        'watchlist': '/v2/watchlists',
+        'clock': '/v2/clock'
              }
 
 # Methods
 #########################################################
 
-def get_account(type):
+def get_orders(type):
+	# Returns a list of ALL open orders
 	if type == 'paper':
 		response = requests.get(
-		paper_url + endpoint['account'],
-		headers=paper_headers)
+		paper_url + endpoint['orders'], headers=paper_headers)
 	elif type == 'live':
 		response = requests.get(
-		live_url + endpoint['account'],
-		headers=live_headers)
+		live_url + endpoint['orders'], headers=live_headers)
 	else:
 		print('You must provide a proper account type (paper/live) in order to return a value!')
 	if response.status_code == 200:
 		data = json.loads(response.content)
 		return data
 	else:
-		print(f'Error retrieving account details. Status code: {response.status_code}. Message: {response.content}')
+		print(f'Error retrieving orders. Status code: {response.status_code}. Message: {response.content}')
 		
 		
-def get_activities(type):
+def get_order_by_id(type, id):
+	# Returns details of the order id that is passed in
 	if type == 'paper':
 		response = requests.get(
-		paper_url + endpoint['activity'],
-		headers=paper_headers)
+		paper_url + endpoint['orders'] + f"/{id}", headers=paper_headers)
 	elif type == 'live':
 		response = requests.get(
-		live_url + endpoint['activity'],
-		headers=live_headers)
+		live_url + endpoint['orders'], headers=live_headers)
 	else:
 		print('You must provide a proper account type (paper/live) in order to return a value!')
 	if response.status_code == 200:
 		data = json.loads(response.content)
 		return data
 	else:
-		print(f'Error retrieving activities. Status code: {response.status_code}. Message: {response.content}')
+		print(f'Error retrieving order. Status code: {response.status_code}. Message: {response.content}')
 		
-		
-def get_all_positions(type):
+def post_order(type, order):
+	# Accepts a dict object and returns order details
 	if type == 'paper':
-		response = requests.get(
-		paper_url + endpoint['positions'],
-		headers=paper_headers)
+		response = requests.post(
+		paper_url + endpoint['orders'],
+		headers=paper_headers,
+		json=order)
 	elif type == 'live':
-		response = requests.get(
-		live_url + endpoint['positions'],
-		headers=live_headers)
+		response = requests.post(
+		live_url + endpoint['orders'],
+		headers=live_headers,
+		json=data)
 	else:
 		print('You must provide a proper account type (paper/live) in order to return a value!')
 	if response.status_code == 200:
 		data = json.loads(response.content)
 		return data
 	else:
-		print(f'Error retrieving positions. Status code: {response.status_code}. Message: {response.content}')
-		
-		
-def close_all_positions(type):
-	if type == 'paper':
-		response = requests.delete(
-		paper_url + endpoint['positions'],
-		headers=paper_headers)
-	elif type == 'live':
-		response = requests.delete(
-		live_url + endpoint['positions'],
-		headers=live_headers)
-	else:
-		print('You must provide a proper account type (paper/live) in order to return a value!')
-	if response.status_code == 200:
-		data = json.loads(response.content)
-		return data
-	else:
-		print(f'Error closing positions. Status code: {response.status_code}. Message: {response.content}')
+		print(f'Error placing order. Status code: {response.status_code}. Message: {response.content}')
 

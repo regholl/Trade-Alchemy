@@ -37,7 +37,9 @@ endpoint = {
         'positions': '/v2/positions',
         'activity': '/v2/account/activities',
         'assets': '/v2/assets',
-        'watchlist': '/v2/watchlists'
+        'watchlist': '/v2/watchlists',
+        'clock': '/v2/clock'
              }
 
+# Methods
 #########################################################
