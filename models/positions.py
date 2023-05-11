@@ -44,3 +44,42 @@ endpoint = {
 #########################################################
 
 
+def get_all_positions(type):
+	if type == 'paper':
+		response = requests.get(
+		paper_url + endpoint['positions'],
+		headers=paper_headers)
+	elif type == 'live':
+		response = requests.get(
+		live_url + endpoint['positions'],
+		headers=live_headers)
+	else:
+		print('You must provide a proper account type (paper/live) in order to return a value!')
+		return
+	if response.status_code == 200:
+		data = json.loads(response.content)
+		return data
+	else:
+		print(f'Error retrieving positions. Status code: {response.status_code}. Message: {response.content}')
+		
+		
+def close_all_positions(type):
+	if type == 'paper':
+		response = requests.delete(
+		paper_url + endpoint['positions'],
+		headers=paper_headers)
+	elif type == 'live':
+		response = requests.delete(
+		live_url + endpoint['positions'],
+		headers=live_headers)
+	else:
+		print('You must provide a proper account type (paper/live) in order to return a value!')
+		return
+	if response.status_code == 200:
+		data = json.loads(response.content)
+		return data
+	elif response.status_code == 207:
+		data = json.loads(response.content)
+		print('Error, there are no positions capabale of being closed')
+	else:
+		print(f'Error closing positions. Status code: {response.status_code}. Message: {response.content}')

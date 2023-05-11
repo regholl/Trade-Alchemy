@@ -1,4 +1,5 @@
 from dotenv import load_dotenv
+import datetime
 import requests
 import json
 import os
@@ -79,44 +80,6 @@ def get_activities(type):
 		return data
 	else:
 		print(f'Error retrieving activities. Status code: {response.status_code}. Message: {response.content}')
-		
-		
-def get_all_positions(type):
-	if type == 'paper':
-		response = requests.get(
-		paper_url + endpoint['positions'],
-		headers=paper_headers)
-	elif type == 'live':
-		response = requests.get(
-		live_url + endpoint['positions'],
-		headers=live_headers)
-	else:
-		print('You must provide a proper account type (paper/live) in order to return a value!')
-		return
-	if response.status_code == 200:
-		data = json.loads(response.content)
-		return data
-	else:
-		print(f'Error retrieving positions. Status code: {response.status_code}. Message: {response.content}')
-		
-		
-def close_all_positions(type):
-	if type == 'paper':
-		response = requests.delete(
-		paper_url + endpoint['positions'],
-		headers=paper_headers)
-	elif type == 'live':
-		response = requests.delete(
-		live_url + endpoint['positions'],
-		headers=live_headers)
-	else:
-		print('You must provide a proper account type (paper/live) in order to return a value!')
-		return
-	if response.status_code == 200:
-		data = json.loads(response.content)
-		return data
-	else:
-		print(f'Error closing positions. Status code: {response.status_code}. Message: {response.content}')
 
 
 def get_watchlist(type):
@@ -132,3 +95,17 @@ def get_watchlist(type):
 		return data
 	else:
 		print(f'Error retreiving watchlists. Status code: {response.status_code}. Message: {response.content}')
+		
+		
+def market_status():
+	# Gets the current market status as a boolean
+	status = None
+	response = requests.get(live_url + endpoint['clock'], headers=live_headers)
+	if response.status_code != 200:
+		raise ValueError('Failed to retrieve market status')
+	market_status = response.json()['is_open']
+	if market_status:
+		status = True
+	else:
+		status = False
+	return status
