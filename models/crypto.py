@@ -43,3 +43,26 @@ endpoint = {
 
 # Methods
 #########################################################
+
+def crypto_buy_list(list, ammount, type):
+	# Takes a list of cryptos and amount then outputs a list of orders to be executed
+	orders = []
+	if type == 'paper':
+		url = paper_url
+		headers = paper_headers
+	elif type == 'live':
+		url = live_url
+		headers = live_headers
+	else:
+		print('Error, you must designate an account type with either paper or live')
+	for i in list:
+		order = {
+		'symbol': i,
+		'notional': ammount,
+		'type': 'market',
+		'side': 'buy',
+		'time_in_force': 'gtc'
+		}
+		orders.append(order)
+	return orders
+

@@ -46,15 +46,17 @@ endpoint = {
 
 def get_orders(type):
 	# Returns a list of ALL open orders
+	target = endpoint['orders']
 	if type == 'paper':
-		response = requests.get(
-		paper_url + endpoint['orders'], headers=paper_headers)
+		url = paper_url
+		headers = paper_headers
 	elif type == 'live':
-		response = requests.get(
-		live_url + endpoint['orders'], headers=live_headers)
+		url = live_url
+		headers = live_headers
 	else:
 		print('You must provide a proper account type (paper/live) in order to return a value!')
 		return
+	response = requests.get(url + target, headers=headers)
 	if response.status_code == 200:
 		data = json.loads(response.content)
 		return data
@@ -64,15 +66,17 @@ def get_orders(type):
 		
 def get_order_by_id(type, id):
 	# Returns details of the order id that is passed in
+	target = endpoint['orders']
 	if type == 'paper':
-		response = requests.get(
-		paper_url + endpoint['orders'] + f"/{id}", headers=paper_headers)
+		url = paper_url
+		headers = paper_headers
 	elif type == 'live':
-		response = requests.get(
-		live_url + endpoint['orders'], headers=live_headers)
+		url = live_url
+		headers = live_headers
 	else:
 		print('You must provide a proper account type (paper/live) in order to return a value!')
 		return
+	response = requests.get(url + target + f'/{id}', headers=headers, )
 	if response.status_code == 200:
 		data = json.loads(response.content)
 		return data
@@ -82,22 +86,25 @@ def get_order_by_id(type, id):
 		
 def post_order(type, order):
 	# Accepts a dict object and returns order details
+	target = endpoint['orders']
 	if type == 'paper':
-		response = requests.post(
-		paper_url + endpoint['orders'],
-		headers=paper_headers,
-		json=order)
+		url = paper_url
+		headers = paper_headers
 	elif type == 'live':
-		response = requests.post(
-		live_url + endpoint['orders'],
-		headers=live_headers,
-		json=data)
+		url = live_url
+		headers = live_headers
 	else:
 		print('You must provide a proper account type (paper/live) in order to return a value!')
 		return
+	response = requests.post(url + target, headers=headers, json=order)
 	if response.status_code == 200:
 		data = json.loads(response.content)
 		return data
 	else:
 		print(f'Error placing order. Status code: {response.status_code}. Message: {response.content}')
+		
+
+def post_list_of_orders(type, orders):
+	for i in orders:
+		post_order(type, i)
 
