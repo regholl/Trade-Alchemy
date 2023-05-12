@@ -1,4 +1,5 @@
 from models import account, crypto, data, equity, orders, positions, plot, storage
+import assets
 
 
 def get_losing_crypto(type):
@@ -27,7 +28,14 @@ def get_losing_equities(type):
 		if i['avg_entry_price'] > i['current_price']:
 			losers.append(i['symbol'])
 	return losers
-
+	
+	
+def batch_crypro_order(type, amount):
+	# Places a batch or orders based on the assets list and amount provided
+	cryptos = assets.crypto
+	orders = crypto.crypto_buy_list(cryptos, amount, type)
+	orders.post_list_of_orders(type, orders)
+	
 
 def dca_order(type):
 	pass
