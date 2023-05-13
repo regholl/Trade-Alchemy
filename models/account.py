@@ -45,17 +45,17 @@ endpoint = {
 #########################################################
 
 def get_account(type):
+	target = endpoint['account']
 	if type == 'paper':
-		response = requests.get(
-		paper_url + endpoint['account'],
-		headers=paper_headers)
+		url = paper_url
+		headers = paper_headers
 	elif type == 'live':
-		response = requests.get(
-		live_url + endpoint['account'],
-		headers=live_headers)
+		url = live_url
+		headers = live_headers
 	else:
 		print('You must provide a proper account type (paper/live) in order to return a value!')
 		return
+	response = requests.get(url + target, headers=headers)
 	if response.status_code == 200:
 		data = json.loads(response.content)
 		return data
@@ -64,17 +64,17 @@ def get_account(type):
 		
 		
 def get_activities(type):
+	target = endpoint['activity']
 	if type == 'paper':
-		response = requests.get(
-		paper_url + endpoint['activity'],
-		headers=paper_headers)
+		url = paper_url
+		headers = paper_headers
 	elif type == 'live':
-		response = requests.get(
-		live_url + endpoint['activity'],
-		headers=live_headers)
+		url = live_url
+		headers = live_headers
 	else:
 		print('You must provide a proper account type (paper/live) in order to return a value!')
 		return
+	response = requests.get(url + target, headers=headers)
 	if response.status_code == 200:
 		data = json.loads(response.content)
 		return data
