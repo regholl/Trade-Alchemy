@@ -109,3 +109,9 @@ def market_status():
 	else:
 		status = False
 	return status
+	
+	
+def get_cash(type):
+	# Returns available cash for the account
+	cash = get_account(type)['cash']
+	return cash
