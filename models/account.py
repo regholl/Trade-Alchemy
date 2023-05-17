@@ -95,6 +95,7 @@ def get_watchlist(type):
 		return data
 	else:
 		print(f'Error retreiving watchlists. Status code: {response.status_code}. Message: {response.content}')
+<<<<<<< Updated upstream
 		
 		
 def market_status():
@@ -115,3 +116,7 @@ def get_cash(type):
 	# Returns available cash for the account
 	cash = get_account(type)['cash']
 	return cash
+=======
+def get_watchlists(type):
+	pass
+>>>>>>> Stashed changes
