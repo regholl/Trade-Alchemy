@@ -62,6 +62,3 @@ def equity_dca_order(type, amount):
 		}
 		orders.post_order(type, order)
 
-
-def scale_in(type):
-	pass
