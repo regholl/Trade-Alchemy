@@ -6,7 +6,7 @@ def get_losing_crypto(type):
 	# Returns a list of cryptos that are cheaper now than the average buy price
 	crypto = []
 	losers = []
-	list = account.get_all_positions(type)
+	list = positions.get_all_positions(type)
 	for i in list:
 		if i['asset_class'] == 'crypto':
 			crypto.append(i)
@@ -20,7 +20,7 @@ def get_losing_equities(type):
 	# Returns a list of equities that are cheaper now than the average buy price
 	equities = []
 	losers = []
-	list = account.get_all_positions(type)
+	list = positions.get_all_positions(type)
 	for i in list:
 		if i['asset_class'] == 'us_equity':
 			equities.append(i)
@@ -37,8 +37,30 @@ def batch_crypro_order(type, amount):
 	orders.post_list_of_orders(type, orders)
 	
 
-def dca_order(type):
-	pass
+def crypto_dca_order(type, amount):
+	data = get_losing_crypto(type)
+	for i in data:
+		order = {
+			'symbol': i,
+			'notional': amount,
+			'type': 'market',
+			'side': 'buy',
+			'time_in_force': 'gtc'
+		}
+		orders.post_order(type, order)
+		
+
+def equity_dca_order(type, amount):
+	data = get_losing_equities(type)
+	for i in data:
+		order = {
+			'symbol': i,
+			'notional': amount,
+			'type': 'market',
+			'side': 'buy',
+			'time_in_force': 'gtc'
+		}
+		orders.post_order(type, order)
 
 
 def scale_in(type):
